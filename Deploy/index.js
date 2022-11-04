@@ -1,5 +1,6 @@
 const express = require("express");
 const fs = require("fs");
+require("dotenv").config();
 
 const port=process.env.PORT || 7000
 
@@ -12,6 +13,10 @@ app.get("/", (req, res) => {
   //console.log(data);
   res.send(data);
 });
+
+app.get("/product",(req,res)=>{
+  res.send({msg:"welcome to product page"})
+})
 
 app.post("/", (req, res) => {
   //console.log(req.body);
@@ -84,4 +89,6 @@ app.put("/:id", (req, res) => {
   }
 });
 
-app.listen(port);
+app.listen(port,()=>{
+  console.log(`running on ${port}`)
+});
